@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPG INNOVA PATH - Accélérateur d'Innovations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #00acc1;
+            --accent: #ff4081;
+            --light: #f5f7fa;
+            --dark: #0d1b3e;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--accent);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background-color: var(--accent);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-btn {
+            background-color: transparent;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+        }
+
+        .auth-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .auth-btn.primary {
+            background-color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .auth-btn.primary:hover {
+            background-color: #0097a7;
+        }
+
+        .admin-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #f50057;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* Founders Section */
+        .founders-intro {
+            background-color: var(--light);
+            padding: 4rem 0;
+        }
+
+        .founders-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .founders-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founders-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .founders-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .organigramme {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .organigramme h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .org-level.ceo-level {
+            margin-bottom: 4rem;
+        }
+
+        .org-node {
+            background: white;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            width: 220px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .org-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .org-node.ceo {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .org-node.ceo h4 {
+            color: white;
+        }
+
+        .org-node h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .org-node p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .org-node.ceo p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .org-connector {
+            width: 2px;
+            height: 30px;
+            background-color: var(--secondary);
+            margin: 0 auto;
+        }
+
+        .org-connector.horizontal {
+            width: 80%;
+            height: 2px;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background-color: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card .short-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .feature-tag {
+            background-color: #e3f2fd;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .details-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .details-btn:hover {
+            background-color: #0097a7;
+            transform: translateY(-2px);
+        }
+
+        /* Service Details Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .service-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .service-modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+            background: none;
+            border: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .service-details-section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .service-details-section h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-details-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-details-section li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Innovators Section */
+        .innovators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .innovator-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .innovator-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .innovator-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .innovator-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .innovator-info {
+            padding: 1.5rem;
+        }
+
+        .innovator-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .innovator-role {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Ideas Section */
+        .ideas {
+            background-color: var(--light);
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .idea-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .idea-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .idea-img {
+            height: 200px;
+            background-color: #e3f2fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 3rem;
+        }
+
+        .idea-info {
+            padding: 1.5rem;
+        }
+
+        .idea-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .idea-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .status-prototype {
+            background-color: #ffeaa7;
+            color: #e17055;
+        }
+
+        .status-validation {
+            background-color: #a29bfe;
+            color: white;
+        }
+
+        .status-production {
+            background-color: #55efc4;
+            color: #00b894;
+        }
+
+        .status-startup {
+            background-color: #fd79a8;
+            color: white;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 2001;
+            overflow-y: auto;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-content {
+            padding: 1.5rem;
+        }
+
+        .admin-section {
+            margin-bottom: 2rem;
+        }
+
+        .admin-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .dashboard-sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .dashboard-sidebar ul {
+            list-style: none;
+        }
+
+        .dashboard-sidebar ul li {
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-sidebar ul li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .dashboard-sidebar ul li a:hover,
+        .dashboard-sidebar ul li a.active {
+            background-color: var(--light);
+            color: var(--secondary);
+        }
+
+        .dashboard-main {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0097a7 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Backup Section */
+        .backup-section {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .backup-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .backup-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .user-info {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 1rem;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .org-connector.horizontal {
+                width: 2px;
+                height: 30px;
+            }
+
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+
+            .backup-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-route"></i>
+                PPG INNOVA PATH
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#fondateurs">Fondateurs</a></li>
+                    <li><a href="#process">Processus</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#innovateurs">Innovateurs</a></li>
+                    <li><a href="#idees">Idées</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="authSection">
+                <!-- Auth buttons will be dynamically loaded here -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero" id="accueil">
+            <div class="container">
+                <h1>PPG INNOVA PATH : Votre Chemin vers l'Innovation</h1>
+                <p>Nous transformons les idées les plus prometteuses en entreprises viables. Notre plateforme accompagne les innovateurs à chaque étape de leur parcours.</p>
+                <button class="cta-button" id="heroSubmitBtn">Soumettre mon projet</button>
+            </div>
+        </section>
+
+        <!-- Founders Section -->
+        <section class="founders-intro" id="fondateurs">
+            <div class="container">
+                <div class="founders-content">
+                    <div class="founders-text">
+                        <h2>L'Équipe Fondatrice de PPG INNOVA PATH</h2>
+                        <p>Notre groupe a été créé par une équipe de visionnaires déterminés à révolutionner l'écosystème de l'innovation au Maroc et au-delà. Leur expertise complémentaire et leur engagement commun ont donné naissance à cette plateforme unique.</p>
+                        <p>Ensemble, ils ont construit un écosystème où les idées les plus prometteuses sont identifiées, développées et transformées en entreprises viables, créant ainsi un impact positif sur la société et l'économie.</p>
+                    </div>
+                    
+                    <div class="organigramme">
+                        <h3>Organigramme de PPG INNOVA PATH</h3>
+                        <div class="org-chart">
+                            <!-- Niveau Direction -->
+                            <div class="org-level ceo-level">
+                                <div class="org-node ceo">
+                                    <h4>Wissal Mtahtah</h4>
+                                    <p>Présidente & CEO</p>
+                                    <p>Stratégie & Vision Globale</p>
+                                </div>
+                            </div>
+                            
+                            <div class="org-connector"></div>
+                            
+                            <!-- Niveau Direction Adjointe -->
+                            <div class="org-level">
+                                <div class="org-node">
+                                    <h4>Meriem Daifi</h4>
+                                    <p>Directrice Innovation</p>
+                                    <p>Recherche & Développement</p>
+                                </div>
+                                <div class="org-node">
+                                    <h4>Douha Zoubai</h4>
+                                    <p>Directrice Opérations</p>
+                                    <p>Gestion de Projets & Partenariats</p>
+                                </div>
+                            </div>
+                            
+                            <div class="org-connector horizontal"></div>
+                            
+                            <!-- Niveau Management -->
+                            <div class="org-level">
+                                <div class="org-node">
+                                    <h4>Maroua Hakkak</h4>
+                                    <p>Responsable Technologies</p>
+                                    <p>Développement & Systèmes IT</p>
+                                </div>
+                                <div class="org-node">
+                                    <h4>Najm Achourouk El Farzaoui</h4>
+                                    <p>Responsable Finance & Investissements</p>
+                                    <p>Relations Investisseurs</p>
+                                </div>
+                                <div class="org-node">
+                                    <h4>Fatima Zahra</h4>
+                                    <p>Responsable Marketing & Communication</p>
+                                    <p>Branding & Relations Publiques</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Notre Processus d'Innovation</h2>
+                    <p>De l'idée initiale à la création d'entreprise, nous accompagnons chaque étape du parcours innovant</p>
+                </div>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Étude de Faisabilité</h3>
+                        <p>Nous analysons chaque concept afin d'en évaluer le taux de réussite potentiel, à travers des études commerciales et stratégiques approfondies.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>Si une idée retient notre attention ou présente un fort potentiel d'amélioration, nous proposons une collaboration pour concevoir un prototype fonctionnel.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>Prototypage</h3>
+                        <p>Ce prototype est présenté sur notre plateforme, afin de mettre en valeur les innovations prometteuses et de mesurer leur impact auprès du public.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Production sur Demande</h3>
+                        <p>La production se fait sur demande, permettant aux passionnés d'innovation d'acheter directement les créations qui les intéressent.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Mise en Avant</h3>
+                        <p>Les prototypes qui rencontrent le plus de succès sont mis en avant sur notre plateforme pour maximiser leur visibilité.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Création de Startup</h3>
+                        <p>Lorsque les ventes d'un prototype dépassent un certain seuil, le projet est retiré de la liste pour passer à l'étape suivante : la création d'une start-up dédiée.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nos Services Principaux</h2>
+                    <p>Notre expertise couvre l'ensemble du processus d'innovation, de la validation à la commercialisation</p>
+                </div>
+                <div class="services-grid" id="servicesContainer">
+                    <!-- Services will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Details Modal -->
+        <div class="modal" id="serviceModal">
+            <div class="modal-content">
+                <button class="close-modal" id="closeServiceModal">&times;</button>
+                <div class="service-modal-header">
+                    <h3 id="modalServiceTitle">Service Title</h3>
+                </div>
+                <div class="service-modal-body" id="modalServiceContent">
+                    <!-- Service content will be loaded here -->
+                </div>
+                <div class="service-modal-footer">
+                    <button class="cta-button" id="closeModalBtn">Fermer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Innovators Section -->
+        <section id="innovateurs">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nos Innovateurs</h2>
+                    <p>Découvrez les talents que nous accompagnons dans leur parcours d'innovation</p>
+                </div>
+                <div class="innovators-grid">
+                    <div class="innovator-card">
+                        <div class="innovator-img">
+                            <img src="wissal.jpg" alt="Wissal Mtahtah">
+                        </div>
+                        <div class="innovator-info">
+                            <h3>Wissal Mtahtah</h3>
+                            <div class="innovator-role">Expert en Intelligence Artificielle</div>
+                            <p>Spécialiste des algorithmes prédictifs appliqués à la santé et au bien-être.</p>
+                        </div>
+                    </div>
+                    <div class="innovator-card">
+                        <div class="innovator-img">
+                            <img src="cv.png" alt="Meriem Daifi">
+                        </div>
+                        <div class="innovator-info">
+                            <h3>Meriem Daifi</h3>
+                            <div class="innovator-role">Ingénieure en Biotechnologie</div>
+                            <p>Pionnière dans le développement de solutions écologiques pour l'agriculture durable.</p>
+                        </div>
+                    </div>
+                    <div class="innovator-card">
+                        <div class="innovator-img">
+                            <img src="doha.jpg" alt="Douha Zoubai">
+                        </div>
+                        <div class="innovator-info">
+                            <h3>Douha Zoubai</h3>
+                            <div class="innovator-role">Designer Industriel</div>
+                            <p>Créatrice de produits innovants alliant esthétique et fonctionnalité.</p>
+                        </div>
+                    </div>
+                    <div class="innovator-card">
+                        <div class="innovator-img">
+                            <img src="maroua.jpg" alt="Maroua Hakkak">
+                        </div>
+                        <div class="innovator-info">
+                            <h3>Maroua Hakkak</h3>
+                            <div class="innovator-role">Experte en Cybersécurité</div>
+                            <p>Développe des solutions de sécurité innovantes pour protéger les données sensibles.</p>
+                        </div>
+                    </div>
+                    <div class="innovator-card">
+                        <div class="innovator-img">
+                            <img src="najm.jpg" alt="Najm Achourouk El Farzaoui">
+                        </div>
+                        <div class="innovator-info">
+                            <h3>Najm Achourouk El Farzaoui</h3>
+                            <div class="innovator-role">Chercheuse en Énergies Renouvelables</div>
+                            <p>Spécialiste des systèmes de stockage d'énergie nouvelle génération.</p>
+                        </div>
+                    </div>
+                    <div class="innovator-card">
+                        <div class="innovator-img">
+                            <img src="fati.jpg" alt="Fatima Zahra ait haddouch">
+                        </div>
+                        <div class="innovator-info">
+                            <h3>Fatima Zahra ait haddouch</h3>
+                            <div class="innovator-role">Innovatrice en Technologies Médicales</div>
+                            <p>Développe des dispositifs médicaux accessibles pour les régions défavorisées.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ideas Section -->
+        <section class="ideas" id="idees">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Idées en Développement</h2>
+                    <p>Découvrez les innovations prometteuses actuellement en cours de développement sur notre plateforme</p>
+                </div>
+                <div class="ideas-grid">
+                    <div class="idea-card">
+                        <div class="idea-img">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="idea-info">
+                            <h3>Purificateur d'Air Intelligent</h3>
+                            <span class="idea-status status-prototype">En phase de prototypage</span>
+                            <p>Système de purification d'air utilisant des plantes spécifiques et un monitoring IA de la qualité de l'air.</p>
+                            <p><strong>Innovateur:</strong> Wissal Mtahtah</p>
+                        </div>
+                    </div>
+                    <div class="idea-card">
+                        <div class="idea-img">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="idea-info">
+                            <h3>Application de Rééducation</h3>
+                            <span class="idea-status status-validation">En validation</span>
+                            <p>Application utilisant la réalité augmentée pour accompagner les séances de rééducation post-opératoire.</p>
+                            <p><strong>Innovateur:</strong> Meriem Daifi</p>
+                        </div>
+                    </div>
+                    <div class="idea-card">
+                        <div class="idea-img">
+                            <i class="fas fa-bicycle"></i>
+                        </div>
+                        <div class="idea-info">
+                            <h3>Vélo Électrique Pliable</h3>
+                            <span class="idea-status status-production">En production</span>
+                            <p>Vélo électrique ultra-pliable avec batterie amovible, conçu pour la mobilité urbaine.</p>
+                            <p><strong>Innovateur:</strong> Douha Zoubai</p>
+                        </div>
+                    </div>
+                    <div class="idea-card">
+                        <div class="idea-img">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="idea-info">
+                            <h3>Système de Récupération d'Eau</h3>
+                            <span class="idea-status status-startup">En création de startup</span>
+                            <p>Dispositif innovant pour récupérer et filtrer l'eau de pluie dans les zones à faible accès à l'eau potable.</p>
+                            <p><strong>Innovateur:</strong> Maroua Hakkak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Idea Form Section -->
+        <section id="submit-idea">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Soumettre une Idée Innovante</h2>
+                    <p>Partagez votre concept avec nous et rejoignez notre communauté d'innovateurs</p>
+                </div>
+                <div class="form-container">
+                    <form id="ideaForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="innovatorName">Nom complet</label>
+                                <input type="text" id="innovatorName" placeholder="Votre nom complet" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="innovatorEmail">Email professionnel</label>
+                                <input type="email" id="innovatorEmail" placeholder="Votre email professionnel" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ideaTitle">Titre de l'idée</label>
+                            <input type="text" id="ideaTitle" placeholder="Donnez un titre accrocheur à votre idée" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ideaDescription">Description détaillée</label>
+                            <textarea id="ideaDescription" rows="5" placeholder="Décrivez votre idée en détail, son fonctionnement, ses avantages et son public cible" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ideaCategory">Catégorie</label>
+                                <select id="ideaCategory" required>
+                                    <option value="">Sélectionnez une catégorie</option>
+                                    <option value="technologie">Technologie</option>
+                                    <option value="sante">Santé & Bien-être</option>
+                                    <option value="environnement">Environnement & Énergie</option>
+                                    <option value="education">Éducation</option>
+                                    <option value="agriculture">Agriculture & Alimentation</option>
+                                    <option value="mobilite">Mobilité & Transport</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="innovationLevel">Niveau d'innovation</label>
+                                <select id="innovationLevel" required>
+                                    <option value="">Sélectionnez un niveau</option>
+                                    <option value="incremental">Innovation incrémentale</option>
+                                    <option value="disruptive">Innovation disruptive</option>
+                                    <option value="radical">Innovation radicale</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="budgetEstimate">Estimation budgétaire (DH)</label>
+                            <input type="number" id="budgetEstimate" placeholder="Budget estimé pour le développement">
+                        </div>
+                        <button type="submit" class="cta-button">Soumettre mon idée</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <h2>Prêt à transformer votre idée en réalité ?</h2>
+                <p>Rejoignez PPG INNOVA PATH et bénéficiez d'un accompagnement complet pour propulser votre innovation vers le succès.</p>
+                <button class="cta-button" id="bottomSubmitBtn">Démarrer mon projet</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h3>Panel d'Administration</h3>
+            <button class="auth-btn" id="closeAdminBtn">&times;</button>
+        </div>
+        <div class="admin-content">
+            <div class="admin-section">
+                <h4>Gestion des Services</h4>
+                <div class="backup-section">
+                    <h5>Base de Données des Services</h5>
+                    <p>Modifiez les informations des services directement dans le format JSON ci-dessous :</p>
+                    <textarea class="backup-textarea" id="servicesBackup" placeholder="Collez votre JSON ici..."></textarea>
+                    <div class="backup-controls">
+                        <button class="auth-btn" id="loadServicesBtn">Charger depuis backup</button>
+                        <button class="auth-btn primary" id="saveServicesBtn">Sauvegarder</button>
+                        <button class="auth-btn" id="resetServicesBtn">Réinitialiser</button>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <h5>Ajouter/Modifier un Service</h5>
+                    <form id="serviceForm">
+                        <div class="form-group">
+                            <label for="serviceId">ID du Service</label>
+                            <input type="text" id="serviceId" placeholder="Laissez vide pour nouveau service">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceTitle">Titre du Service</label>
+                            <input type="text" id="serviceTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceIcon">Icône (FontAwesome)</label>
+                            <input type="text" id="serviceIcon" placeholder="fas fa-chart-line" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceShort">Description Courte</label>
+                            <textarea id="serviceShort" rows="2" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceFull">Description Complète</label>
+                            <textarea id="serviceFull" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceDetails">Détails du Service (JSON)</label>
+                            <textarea id="serviceDetails" rows="6" placeholder='{"etapes": [], "delais": "", "tarifs": "", "resultats": []}'></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceFeatures">Fonctionnalités (séparées par des virgules)</label>
+                            <input type="text" id="serviceFeatures" placeholder="Analyse marché, Étude concurrence, Évaluation risques">
+                        </div>
+                        <button type="submit" class="cta-button">Enregistrer le Service</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h4>Sauvegarde & Restauration</h4>
+                <div class="backup-controls">
+                    <button class="auth-btn" id="exportAllBtn">Exporter toutes les données</button>
+                    <button class="auth-btn primary" id="importDataBtn">Importer des données</button>
+                </div>
+                <div class="backup-section">
+                    <h5>Données Complètes</h5>
+                    <textarea class="backup-textarea" id="fullBackup" readonly></textarea>
+                    <button class="auth-btn" id="copyBackupBtn">Copier dans le presse-papier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PPG INNOVA PATH</h3>
+                    <p>Votre chemin vers l'innovation. Nous détectons, développons et propulsons les innovations de demain en accompagnant les innovateurs dans leur parcours.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Nos Services</h3>
+                    <ul id="footerServices">
+                        <!-- Services list will be loaded here -->
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Rapide</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</li>
+                        <li><i class="fas fa-phone"></i> +212 5 XX XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@ppginnovapath.ma</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 PPG INNOVA PATH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeLoginModal">&times;</button>
+            <h2>Connexion</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" placeholder="Votre mot de passe" required>
+                </div>
+                <button type="submit" class="cta-button">Se connecter</button>
+            </form>
+            <p style="margin-top: 1rem; text-align: center;">Pas encore de compte? <a href="#" id="switchToRegister">S'inscrire</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeRegisterModal">&times;</button>
+            <h2>Inscription</h2>
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registerFirstName">Prénom</label>
+                        <input type="text" id="registerFirstName" placeholder="Votre prénom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerLastName">Nom</label>
+                        <input type="text" id="registerLastName" placeholder="Votre nom" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Mot de passe</label>
+                    <input type="password" id="registerPassword" placeholder="Créez un mot de passe" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Confirmez votre mot de passe" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerSpecialty">Domaine d'expertise</label>
+                    <select id="registerSpecialty" required>
+                        <option value="">Sélectionnez</option>
+                        <option value="technologie">Technologie</option>
+                        <option value="sante">Santé</option>
+                        <option value="environnement">Environnement</option>
+                        <option value="education">Éducation</option>
+                        <option value="agriculture">Agriculture</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <button type="submit" class="cta-button">S'inscrire</button>
+            </form>
+            <p style="margin-top: 1rem; text-align: center;">Déjà un compte? <a href="#" id="switchToLogin">Se connecter</a></p>
+        </div>
+    </div>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeSuccessModal">&times;</button>
+            <h2>Succès!</h2>
+            <p id="successMessage">Opération effectuée avec succès.</p>
+            <button class="cta-button" id="modalCloseBtn">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        // Base de données initiale des services
+        const defaultServices = [
+            {
+                id: "1",
+                title: "Études de Faisabilité",
+                icon: "fas fa-chart-line",
+                short: "Analyses approfondies du marché, étude de la concurrence, évaluation du potentiel commercial et identification des risques potentiels.",
+                full: "Nos études de faisabilité offrent une analyse complète de la viabilité de votre projet. Nous examinons chaque aspect du marché cible, de la concurrence existante et des conditions économiques pour évaluer le potentiel de réussite de votre innovation.",
+                details: {
+                    etapes: [
+                        "Analyse du marché cible et identification des segments",
+                        "Étude approfondie de la concurrence et des alternatives",
+                        "Évaluation du potentiel commercial et des canaux de distribution",
+                        "Identification des risques techniques et commerciaux",
+                        "Analyse financière et élaboration de scénarios"
+                    ],
+                    delais: "2 à 4 semaines selon la complexité du projet",
+                    tarifs: "À partir de 15 000 DH",
+                    resultats: [
+                        "Rapport détaillé de faisabilité",
+                        "Recommandations stratégiques",
+                        "Plan d'action priorisé",
+                        "Analyse SWOT complète"
+                    ]
+                },
+                features: ["Analyse marché", "Étude concurrence", "Évaluation risques", "Analyse financière"]
+            },
+            {
+                id: "2",
+                title: "Validation d'Idées Innovantes",
+                icon: "fas fa-check-circle",
+                short: "Processus rigoureux de validation technique et commerciale pour s'assurer de la viabilité et du potentiel de chaque innovation.",
+                full: "Nous mettons en œuvre un processus de validation exhaustif pour tester la solidité de votre concept. Notre approche combine des tests utilisateurs, des analyses techniques et des évaluations commerciales pour valider chaque aspect de votre innovation avant d'investir dans son développement.",
+                details: {
+                    etapes: [
+                        "Tests de concept auprès de groupes cibles",
+                        "Validation technique par des experts",
+                        "Évaluation de la propriété intellectuelle",
+                        "Test de marché minimal viable",
+                        "Analyse des retours et ajustements"
+                    ],
+                    delais: "3 à 6 semaines",
+                    tarifs: "À partir de 25 000 DH",
+                    resultats: [
+                        "Rapport de validation complet",
+                        "Feedback utilisateurs détaillé",
+                        "Recommandations d'amélioration",
+                        "Feuille de route de développement"
+                    ]
+                },
+                features: ["Tests utilisateurs", "Validation technique", "Analyse IP", "Test marché"]
+            },
+            {
+                id: "3",
+                title: "Développement de Prototypes",
+                icon: "fas fa-cogs",
+                short: "Conception et réalisation de prototypes fonctionnels avec nos équipes d'experts en ingénierie et design.",
+                full: "Notre équipe d'ingénieurs et de designers travaille main dans la main pour transformer votre concept en prototype fonctionnel. Nous utilisons les dernières technologies et méthodologies pour créer des prototypes qui démontrent la valeur de votre innovation.",
+                details: {
+                    etapes: [
+                        "Design conceptuel et spécifications techniques",
+                        "Conception 3D et modélisation",
+                        "Prototypage rapide et itérations",
+                        "Tests fonctionnels et d'endurance",
+                        "Optimisation pour la production"
+                    ],
+                    delais: "4 à 8 semaines",
+                    tarifs: "À partir de 50 000 DH selon complexité",
+                    resultats: [
+                        "Prototype fonctionnel",
+                        "Documentation technique complète",
+                        "Fiches de coûts de production",
+                        "Plan d'industrialisation"
+                    ]
+                },
+                features: ["Design industriel", "Prototypage 3D", "Tests fonctionnels", "Optimisation"]
+            },
+            {
+                id: "4",
+                title: "Présentation et Test de Marché",
+                icon: "fas fa-bullhorn",
+                short: "Mise en avant des prototypes sur notre plateforme pour mesurer l'intérêt du public et recueillir des retours précieux.",
+                full: "Nous exposons votre prototype à notre communauté d'innovateurs et d'investisseurs pour recueillir des retours précieux et mesurer l'intérêt du marché. Cette étape cruciale permet d'affiner votre produit avant son lancement commercial.",
+                details: {
+                    etapes: [
+                        "Présentation sur notre plateforme dédiée",
+                        "Campagne de marketing ciblée",
+                        "Collecte de pré-commandes",
+                        "Analyse des comportements utilisateurs",
+                        "Collecte et synthèse des retours"
+                    ],
+                    delais: "2 à 3 mois",
+                    tarifs: "15% des ventes générées",
+                    resultats: [
+                        "Rapport d'analyse du marché",
+                        "Données d'engagement utilisateurs",
+                        "Prévisions de ventes",
+                        "Retours qualitatifs détaillés"
+                    ]
+                },
+                features: ["Présentation plateforme", "Marketing ciblé", "Analyse données", "Collecte retours"]
+            },
+            {
+                id: "5",
+                title: "Production sur Demande",
+                icon: "fas fa-industry",
+                short: "Fabrication à la demande pour valider le marché sans investissement massif initial, réduisant ainsi les risques.",
+                full: "Nous organisons la production de petites séries de votre produit pour tester le marché réel sans engagement financier important. Cette approche réduit les risques et permet d'ajuster la production en fonction de la demande réelle.",
+                details: {
+                    etapes: [
+                        "Sourcing de fournisseurs et matières premières",
+                        "Optimisation des processus de fabrication",
+                        "Production de séries limitées",
+                        "Contrôle qualité strict",
+                        "Logistique et distribution"
+                    ],
+                    delais: "4 à 12 semaines selon produit",
+                    tarifs: "Coût de production + 20%",
+                    resultats: [
+                        "Produits finis de qualité",
+                        "Chaîne d'approvisionnement établie",
+                        "Processus de production optimisé",
+                        "Canaux de distribution testés"
+                    ]
+                },
+                features: ["Production petites séries", "Contrôle qualité", "Logistique", "Sourcing"]
+            },
+            {
+                id: "6",
+                title: "Accompagnement vers la Startup",
+                icon: "fas fa-hand-holding-usd",
+                short: "Support complet pour transformer les innovations prometteuses en entreprises viables, avec aide au financement et à la structuration.",
+                full: "Nous accompagnons les projets les plus prometteurs dans la création de leur entreprise. De la recherche de financement à la structuration juridique, en passant par le recrutement de l'équipe, nous vous guidons à chaque étape de la création de votre startup.",
+                details: {
+                    etapes: [
+                        "Élaboration du plan d'affaires",
+                        "Recherche de financement et levée de fonds",
+                        "Structuration juridique et administrative",
+                        "Recrutement de l'équipe fondatrice",
+                        "Développement de la stratégie de croissance"
+                    ],
+                    delais: "3 à 6 mois",
+                    tarifs: "Forfait personnalisé + participation au capital",
+                    resultats: [
+                        "Startup opérationnelle",
+                        "Financement sécurisé",
+                        "Équipe complète",
+                        "Plan de croissance"
+                    ]
+                },
+                features: ["Levée de fonds", "Structuration juridique", "Recrutement", "Stratégie croissance"]
+            }
+        ];
+
+        // Système de gestion des services
+        class ServiceManager {
+            constructor() {
+                this.services = this.loadServices();
+                this.currentService = null;
+            }
+
+            loadServices() {
+                const saved = localStorage.getItem('ppg_services');
+                return saved ? JSON.parse(saved) : defaultServices;
+            }
+
+            saveServices() {
+                localStorage.setItem('ppg_services', JSON.stringify(this.services));
+                this.renderServices();
+                this.updateFooterServices();
+            }
+
+            getService(id) {
+                return this.services.find(s => s.id === id);
+            }
+
+            addService(service) {
+                if (!service.id) {
+                    service.id = Date.now().toString();
+                }
+                this.services.push(service);
+                this.saveServices();
+                return service;
+            }
+
+            updateService(id, updates) {
+                const index = this.services.findIndex(s => s.id === id);
+                if (index !== -1) {
+                    this.services[index] = { ...this.services[index], ...updates };
+                    this.saveServices();
+                    return this.services[index];
+                }
+                return null;
+            }
+
+            deleteService(id) {
+                this.services = this.services.filter(s => s.id !== id);
+                this.saveServices();
+            }
+
+            renderServices() {
+                const container = document.getElementById('servicesContainer');
+                if (!container) return;
+
+                container.innerHTML = this.services.map(service => `
+                    <div class="service-card" data-id="${service.id}">
+                        <div class="service-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <h3>${service.title}</h3>
+                        <div class="short-desc">${service.short}</div>
+                        
+                        <div class="service-features">
+                            ${service.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                        </div>
+                        
+                        <button class="details-btn" onclick="serviceManager.showServiceModal('${service.id}')">
+                            Voir les détails complets
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            updateFooterServices() {
+                const footer = document.getElementById('footerServices');
+                if (!footer) return;
+
+                footer.innerHTML = this.services.map(service => 
+                    `<li><a href="#" onclick="serviceManager.showServiceModal('${service.id}'); return false;">${service.title}</a></li>`
+                ).join('');
+            }
+
+            showServiceModal(id) {
+                const service = this.getService(id);
+                if (!service) return;
+
+                this.currentService = service;
+                
+                document.getElementById('modalServiceTitle').textContent = service.title;
+                
+                const content = document.getElementById('modalServiceContent');
+                content.innerHTML = `
+                    <div style="margin-bottom: 2rem;">
+                        <div class="service-icon" style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Description Complète</h4>
+                        <p style="margin-bottom: 1.5rem; line-height: 1.7;">${service.full}</p>
+                    </div>
+
+                    <div class="service-details-section">
+                        <h4>Processus détaillé :</h4>
+                        <ul>
+                            ${service.details.etapes.map((etape, i) => `<li><strong>Étape ${i+1}:</strong> ${etape}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <h5>Délais</h5>
+                            <p style="color: var(--secondary); font-weight: bold;">${service.details.delais}</p>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <h5>Investissement</h5>
+                            <p style="color: var(--secondary); font-weight: bold;">${service.details.tarifs}</p>
+                        </div>
+                    </div>
+
+                    <div class="service-details-section">
+                        <h4>Résultats livrés :</h4>
+                        <ul>
+                            ${service.details.resultats.map(resultat => `<li>${resultat}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>Fonctionnalités clés :</h4>
+                        <div class="service-features" style="margin-top: 0.5rem;">
+                            ${service.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('serviceModal').style.display = 'flex';
+            }
+
+            hideServiceModal() {
+                document.getElementById('serviceModal').style.display = 'none';
+                this.currentService = null;
+            }
+
+            exportServices() {
+                return JSON.stringify(this.services, null, 2);
+            }
+
+            importServices(json) {
+                try {
+                    const data = JSON.parse(json);
+                    if (Array.isArray(data)) {
+                        this.services = data;
+                        this.saveServices();
+                        return true;
+                    }
+                } catch (e) {
+                    console.error('Invalid JSON:', e);
+                }
+                return false;
+            }
+
+            resetToDefault() {
+                this.services = [...defaultServices];
+                this.saveServices();
+            }
+
+            exportAllData() {
+                return JSON.stringify({
+                    services: this.services,
+                    exportDate: new Date().toISOString(),
+                    version: '1.0'
+                }, null, 2);
+            }
+        }
+
+        // Backend Simulation avec Authentification
+        class PPGInnovaPathBackend {
+            constructor() {
+                this.users = JSON.parse(localStorage.getItem('ppg_users')) || [];
+                this.ideas = JSON.parse(localStorage.getItem('ppg_ideas')) || [];
+                this.messages = JSON.parse(localStorage.getItem('ppg_messages')) || [];
+                this.currentUser = JSON.parse(localStorage.getItem('ppg_currentUser')) || null;
+                
+                // Créer un admin par défaut si aucun utilisateur n'existe
+                if (this.users.length === 0) {
+                    this.createDefaultAdmin();
+                }
+            }
+
+            createDefaultAdmin() {
+                const adminUser = {
+                    id: '1',
+                    firstName: 'Admin',
+                    lastName: 'System',
+                    email: 'admin@ppginnovapath.ma',
+                    password: 'admin123',
+                    specialty: 'administration',
+                    role: 'admin',
+                    registrationDate: new Date().toISOString()
+                };
+                this.users.push(adminUser);
+                this.saveUsers();
+            }
+
+            saveUsers() {
+                localStorage.setItem('ppg_users', JSON.stringify(this.users));
+            }
+
+            saveIdeas() {
+                localStorage.setItem('ppg_ideas', JSON.stringify(this.ideas));
+            }
+
+            saveMessages() {
+                localStorage.setItem('ppg_messages', JSON.stringify(this.messages));
+            }
+
+            saveCurrentUser() {
+                localStorage.setItem('ppg_currentUser', JSON.stringify(this.currentUser));
+            }
+
+            clearCurrentUser() {
+                this.currentUser = null;
+                localStorage.removeItem('ppg_currentUser');
+            }
+
+            register(userData) {
+                const existingUser = this.users.find(u => u.email === userData.email);
+                if (existingUser) {
+                    return { success: false, message: "Cet email est déjà utilisé." };
+                }
+
+                const newUser = {
+                    id: Date.now().toString(),
+                    ...userData,
+                    registrationDate: new Date().toISOString(),
+                    role: 'innovator'
+                };
+
+                this.users.push(newUser);
+                this.saveUsers();
+                return { success: true, user: newUser };
+            }
+
+            login(email, password) {
+                const user = this.users.find(u => u.email === email && u.password === password);
+                if (!user) {
+                    return { success: false, message: "Email ou mot de passe incorrect." };
+                }
+
+                this.currentUser = user;
+                this.saveCurrentUser();
+                return { success: true, user };
+            }
+
+            logout() {
+                this.clearCurrentUser();
+                return { success: true };
+            }
+
+            isAdmin() {
+                return this.currentUser && this.currentUser.role === 'admin';
+            }
+
+            submitIdea(ideaData) {
+                const newIdea = {
+                    id: Date.now().toString(),
+                    ...ideaData,
+                    userId: this.currentUser.id,
+                    status: 'submitted',
+                    submissionDate: new Date().toISOString(),
+                    lastUpdate: new Date().toISOString()
+                };
+
+                this.ideas.push(newIdea);
+                this.saveIdeas();
+                return { success: true, idea: newIdea };
+            }
+
+            getUserIdeas(userId) {
+                return this.ideas.filter(idea => idea.userId === userId);
+            }
+
+            updateUserProfile(userId, profileData) {
+                const userIndex = this.users.findIndex(u => u.id === userId);
+                if (userIndex === -1) return { success: false };
+
+                this.users[userIndex] = { ...this.users[userIndex], ...profileData };
+                if (this.currentUser && this.currentUser.id === userId) {
+                    this.currentUser = this.users[userIndex];
+                    this.saveCurrentUser();
+                }
+                this.saveUsers();
+                return { success: true, user: this.users[userIndex] };
+            }
+        }
+
+        // Application State
+        const serviceManager = new ServiceManager();
+        const backend = new PPGInnovaPathBackend();
+
+        // DOM Elements
+        const authSection = document.getElementById('authSection');
+        const mainContent = document.getElementById('mainContent');
+        const adminBtn = document.getElementById('adminBtn');
+        const adminPanel = document.getElementById('adminPanel');
+        const closeAdminBtn = document.getElementById('closeAdminBtn');
+        const serviceModal = document.getElementById('serviceModal');
+        const closeServiceModal = document.getElementById('closeServiceModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const servicesBackup = document.getElementById('servicesBackup');
+        const loadServicesBtn = document.getElementById('loadServicesBtn');
+        const saveServicesBtn = document.getElementById('saveServicesBtn');
+        const resetServicesBtn = document.getElementById('resetServicesBtn');
+        const serviceForm = document.getElementById('serviceForm');
+        const exportAllBtn = document.getElementById('exportAllBtn');
+        const importDataBtn = document.getElementById('importDataBtn');
+        const fullBackup = document.getElementById('fullBackup');
+        const copyBackupBtn = document.getElementById('copyBackupBtn');
+        const heroSubmitBtn = document.getElementById('heroSubmitBtn');
+        const bottomSubmitBtn = document.getElementById('bottomSubmitBtn');
+
+        // Modal Elements
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const successModal = document.getElementById('successModal');
+
+        // Forms
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const ideaForm = document.getElementById('ideaForm');
+
+        // Initialize
+        function init() {
+            updateAuthUI();
+            serviceManager.renderServices();
+            serviceManager.updateFooterServices();
+            setupEventListeners();
+            
+            // Set up service backup textarea
+            servicesBackup.value = serviceManager.exportServices();
+            fullBackup.value = serviceManager.exportAllData();
+        }
+
+        function updateAuthUI() {
+            if (backend.currentUser) {
+                const initials = (backend.currentUser.firstName.charAt(0) + backend.currentUser.lastName.charAt(0)).toUpperCase();
+                
+                authSection.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar">${initials}</div>
+                        <div>
+                            <div class="user-name">${backend.currentUser.firstName} ${backend.currentUser.lastName}</div>
+                            <small>${backend.currentUser.specialty}</small>
+                        </div>
+                        ${backend.isAdmin() ? '<button class="admin-btn" id="adminBtn">Admin</button>' : ''}
+                        <button class="logout-btn" id="logoutBtn">Déconnexion</button>
+                    </div>
+                `;
+            } else {
+                authSection.innerHTML = `
+                    <div class="auth-buttons">
+                        <button class="auth-btn" id="loginBtn">Connexion</button>
+                        <button class="auth-btn primary" id="registerBtn">Inscription</button>
+                    </div>
+                `;
+            }
+            
+            // Re-attach event listeners after UI update
+            attachAuthEventListeners();
+        }
+
+        function attachAuthEventListeners() {
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const adminBtn = document.getElementById('adminBtn');
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', () => showModal(loginModal));
+            }
+            
+            if (registerBtn) {
+                registerBtn.addEventListener('click', () => showModal(registerModal));
+            }
+            
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+            
+            if (adminBtn) {
+                adminBtn.addEventListener('click', () => {
+                    adminPanel.classList.add('active');
+                    servicesBackup.value = serviceManager.exportServices();
+                    fullBackup.value = serviceManager.exportAllData();
+                });
+            }
+        }
+
+        function setupEventListeners() {
+            // Admin Panel
+            closeAdminBtn.addEventListener('click', () => {
+                adminPanel.classList.remove('active');
+            });
+
+            // Service Modal
+            closeServiceModal.addEventListener('click', () => {
+                serviceManager.hideServiceModal();
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                serviceManager.hideServiceModal();
+            });
+
+            // Service Backup Management
+            loadServicesBtn.addEventListener('click', () => {
+                const json = servicesBackup.value;
+                if (json && serviceManager.importServices(json)) {
+                    showSuccess('Services chargés avec succès!');
+                    servicesBackup.value = serviceManager.exportServices();
+                    fullBackup.value = serviceManager.exportAllData();
+                } else {
+                    alert('Erreur: JSON invalide');
+                }
+            });
+
+            saveServicesBtn.addEventListener('click', () => {
+                localStorage.setItem('ppg_services_backup', servicesBackup.value);
+                showSuccess('Sauvegarde créée avec succès!');
+            });
+
+            resetServicesBtn.addEventListener('click', () => {
+                if (confirm('Voulez-vous vraiment réinitialiser les services aux valeurs par défaut?')) {
+                    serviceManager.resetToDefault();
+                    servicesBackup.value = serviceManager.exportServices();
+                    fullBackup.value = serviceManager.exportAllData();
+                    showSuccess('Services réinitialisés!');
+                }
+            });
+
+            // Service Form
+            serviceForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const serviceData = {
+                    id: document.getElementById('serviceId').value || undefined,
+                    title: document.getElementById('serviceTitle').value,
+                    icon: document.getElementById('serviceIcon').value,
+                    short: document.getElementById('serviceShort').value,
+                    full: document.getElementById('serviceFull').value,
+                    details: JSON.parse(document.getElementById('serviceDetails').value || '{}'),
+                    features: document.getElementById('serviceFeatures').value.split(',').map(f => f.trim()).filter(f => f)
+                };
+
+                if (serviceData.id) {
+                    serviceManager.updateService(serviceData.id, serviceData);
+                } else {
+                    serviceManager.addService(serviceData);
+                }
+
+                serviceForm.reset();
+                servicesBackup.value = serviceManager.exportServices();
+                fullBackup.value = serviceManager.exportAllData();
+                showSuccess('Service enregistré avec succès!');
+            });
+
+            // Full Backup
+            exportAllBtn.addEventListener('click', () => {
+                fullBackup.value = serviceManager.exportAllData();
+                showSuccess('Données exportées!');
+            });
+
+            importDataBtn.addEventListener('click', () => {
+                const json = prompt('Collez le JSON de sauvegarde:');
+                if (json) {
+                    try {
+                        const data = JSON.parse(json);
+                        if (data.services && Array.isArray(data.services)) {
+                            serviceManager.services = data.services;
+                            serviceManager.saveServices();
+                            servicesBackup.value = serviceManager.exportServices();
+                            fullBackup.value = serviceManager.exportAllData();
+                            showSuccess('Données importées avec succès!');
+                        } else {
+                            alert('Format de sauvegarde invalide');
+                        }
+                    } catch (e) {
+                        alert('JSON invalide: ' + e.message);
+                    }
+                }
+            });
+
+            copyBackupBtn.addEventListener('click', () => {
+                fullBackup.select();
+                document.execCommand('copy');
+                showSuccess('Données copiées dans le presse-papier!');
+            });
+
+            // Modal switching
+            document.getElementById('switchToRegister').addEventListener('click', (e) => {
+                e.preventDefault();
+                hideModal(loginModal);
+                showModal(registerModal);
+            });
+
+            document.getElementById('switchToLogin').addEventListener('click', (e) => {
+                e.preventDefault();
+                hideModal(registerModal);
+                showModal(loginModal);
+            });
+
+            // Close modals
+            document.getElementById('closeLoginModal').addEventListener('click', () => hideModal(loginModal));
+            document.getElementById('closeRegisterModal').addEventListener('click', () => hideModal(registerModal));
+            document.getElementById('closeSuccessModal').addEventListener('click', () => hideModal(successModal));
+            document.getElementById('modalCloseBtn').addEventListener('click', () => hideModal(successModal));
+
+            // Close modals on outside click
+            window.addEventListener('click', (e) => {
+                if (e.target === serviceModal) {
+                    serviceManager.hideServiceModal();
+                }
+                if (e.target === adminPanel) {
+                    adminPanel.classList.remove('active');
+                }
+                if (e.target === loginModal) hideModal(loginModal);
+                if (e.target === registerModal) hideModal(registerModal);
+                if (e.target === successModal) hideModal(successModal);
+            });
+
+            // Form submissions
+            loginForm.addEventListener('submit', handleLogin);
+            registerForm.addEventListener('submit', handleRegister);
+            ideaForm.addEventListener('submit', handleIdeaSubmission);
+
+            // Scroll to submit form
+            heroSubmitBtn.addEventListener('click', () => {
+                document.getElementById('submit-idea').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            bottomSubmitBtn.addEventListener('click', () => {
+                if (backend.currentUser) {
+                    document.getElementById('submit-idea').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    showModal(loginModal);
+                }
+            });
+
+            // Load saved backup on page load
+            const savedBackup = localStorage.getItem('ppg_services_backup');
+            if (savedBackup) {
+                try {
+                    serviceManager.importServices(savedBackup);
+                } catch (e) {
+                    console.error('Failed to load backup:', e);
+                }
+            }
+        }
+
+        function showModal(modal) {
+            modal.style.display = 'flex';
+        }
+
+        function hideModal(modal) {
+            modal.style.display = 'none';
+        }
+
+        function showSuccess(message) {
+            document.getElementById('successMessage').textContent = message;
+            showModal(successModal);
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert("Veuillez remplir tous les champs");
+                return;
+            }
+
+            const result = backend.login(email, password);
+            if (result.success) {
+                hideModal(loginModal);
+                updateAuthUI();
+                showSuccess('Connexion réussie! Bienvenue ' + result.user.firstName);
+                
+                // Réinitialiser le formulaire
+                loginForm.reset();
+            } else {
+                alert(result.message);
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            const userData = {
+                firstName: document.getElementById('registerFirstName').value,
+                lastName: document.getElementById('registerLastName').value,
+                email: document.getElementById('registerEmail').value,
+                password: document.getElementById('registerPassword').value,
+                specialty: document.getElementById('registerSpecialty').value
+            };
+
+            // Validation
+            if (!userData.firstName || !userData.lastName || !userData.email || !userData.password || !userData.specialty) {
+                alert("Veuillez remplir tous les champs obligatoires.");
+                return;
+            }
+
+            if (userData.password !== document.getElementById('registerConfirmPassword').value) {
+                alert("Les mots de passe ne correspondent pas.");
+                return;
+            }
+
+            // Validation de l'email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userData.email)) {
+                alert("Veuillez entrer une adresse email valide.");
+                return;
+            }
+
+            const result = backend.register(userData);
+            if (result.success) {
+                // Auto-login après inscription
+                backend.login(userData.email, userData.password);
+                hideModal(registerModal);
+                updateAuthUI();
+                showSuccess('Inscription réussie! Bienvenue sur PPG INNOVA PATH, ' + result.user.firstName);
+                
+                // Réinitialiser le formulaire
+                registerForm.reset();
+            } else {
+                alert(result.message);
+            }
+        }
+
+        async function handleLogout() {
+            backend.logout();
+            updateAuthUI();
+            showSuccess('Déconnexion réussie. À bientôt!');
+        }
+
+        async function handleIdeaSubmission(e) {
+            e.preventDefault();
+            
+            if (!backend.currentUser) {
+                showModal(loginModal);
+                return;
+            }
+
+            const ideaData = {
+                title: document.getElementById('ideaTitle').value,
+                description: document.getElementById('ideaDescription').value,
+                category: document.getElementById('ideaCategory').value,
+                innovationLevel: document.getElementById('innovationLevel').value,
+                budget: document.getElementById('budgetEstimate').value || 0,
+                innovatorName: document.getElementById('innovatorName').value,
+                innovatorEmail: document.getElementById('innovatorEmail').value
+            };
+
+            // Validation
+            if (!ideaData.title || !ideaData.description || !ideaData.category || !ideaData.innovationLevel || !ideaData.innovatorName || !ideaData.innovatorEmail) {
+                alert("Veuillez remplir tous les champs obligatoires.");
+                return;
+            }
+
+            const result = backend.submitIdea(ideaData);
+            if (result.success) {
+                ideaForm.reset();
+                showSuccess('Idée soumise avec succès! Notre équipe l\'analysera sous 48h et vous contactera à l\'adresse ' + ideaData.innovatorEmail);
+            }
+        }
+
+        // Make serviceManager globally available for onclick handlers
+        window.serviceManager = serviceManager;
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
